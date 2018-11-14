@@ -21,12 +21,15 @@ queries = anosql.load_queries('sqlite', 'sql/query/queries.sql')
 ##### ROUTES ######
 #  where we can point a browser
 
-## index page
+## index page, same as media page
 @route("/")
+@route("/media")
 def index():
     media = queries.get_media_by_author_title(conn,"%","%")
     idx = tmpl_env.get_template('index.html')
     return(idx.render(media=media))
+
+## 
 
 ##### RUN #######
 # run the web server
